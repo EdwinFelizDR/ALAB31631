@@ -101,3 +101,36 @@ var menuLinks = [
    // Part 4: Adding Menu Interaction 
    // 1.	Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks. 
    const topMenuLinks = document.getElementById('top-menu').children;
+
+   // 2. Attach a delegated 'click' event listener to topMenuEl.
+   topMenuEl.addEventListener('click', (event) => {
+   
+   // The first line of code of the event listener function should call the event object's preventDefault() method.
+   //The preventDefault() method allows you to cancel this default behavior.
+   event.preventDefault();
+
+   //stored what link was clicked on the top menu
+   const clickedLink = event.target;
+
+   // The second line of code of the function should immediately return if the element clicked was not an <a> element.
+   if (clickedLink.tagName !== 'A') return;
+
+   // Log the content of the <a> to verify the handler is working.
+   console.log(`Clicked: ${clickedLink.textContent}`);
+
+   //The event listener should add the active class to the <a> element that was clicked, 
+   //unless it was already active, in which case it should remove it. 
+   // Toggle the 'active' class for the clicked link
+   //The toggle() method in JavaScript is like an on/off switch for classes on elements. 
+   clickedLink.classList.toggle('active');   
+   
+   // Remove the 'active' class from other <a> elements
+    const allLinks = topMenuEl.querySelectorAll('a');
+    allLinks.forEach((link) => {
+      if (link !== clickedLink) {
+        link.classList.remove('active');
+      }
+    });
+});
+
+  
