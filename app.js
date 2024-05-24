@@ -3,11 +3,22 @@
 
 // data structure to create menu buttons. 
 var menuLinks = [ 
-   { text: 'about', href: '/about.html' }, 
-   { text: 'catalog', href: '/catalog.html' }, 
-   { text: 'orders', href: '/orders.html' }, 
-   { text: 'account', href: '/account.html' }, 
- ]; 
+   {text: 'about', href: '/about'}, 
+   {text: 'catalog', href: '#', subLinks: [ 
+     {text: 'all', href: '/catalog/all'}, 
+     {text: 'top selling', href: '/catalog/top'}, 
+     {text: 'search', href: '/catalog/search'}, 
+   ]}, 
+   {text: 'orders', href: '#' , subLinks: [ 
+     {text: 'new', href: '/orders/new'}, 
+     {text: 'pending', href: '/orders/pending'}, 
+     {text: 'history', href: '/orders/history'}, 
+   ]}, 
+   {text: 'account', href: '#', subLinks: [ 
+     {text: 'profile', href: '/account/profile'}, 
+     {text: 'sign out', href: '/account/signout'}, 
+   ]}, 
+ ];   
  
 // Part 1: Getting Started 
 
@@ -66,3 +77,27 @@ var menuLinks = [
        topMenuEl.appendChild(aElement);
    });
 
+//R-ALAB 316.3.1 - DOM Manipulation (Part Two)
+
+//Part 1: Getting Started 
+
+
+//Part 2: Adding Additional HTML and CSS 
+   // 1.Select and cache the <nav id="sub-menu"> element in a variable named subMenuEl
+   const subMenuEl = document.getElementById('sub-menu');
+
+   //2. Set the height of the subMenuEl element to be 100%.
+   subMenuEl.style.height = '100%';
+
+   //3. Set the background color of subMenuEl  
+   //to the value stored in the --sub-menu-bg  CSS custom property
+   const subMenuBgColor = ('var(--sub-menu-bg )').trim();
+   subMenuEl.style.backgroundColor = subMenuBgColor;
+   
+   //4. Add the class "flex-around" to topMenuEl
+   subMenuEl.classList.add('flex-around');
+
+
+   // Part 4: Adding Menu Interaction 
+   // 1.	Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks. 
+   const topMenuLinks = document.getElementById('top-menu').children;
