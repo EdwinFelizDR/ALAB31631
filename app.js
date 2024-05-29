@@ -140,8 +140,12 @@ topMenuEl.addEventListener('click', (event) => {
   allLinks.forEach((link) => {
     if (link !== clickedLink) {
       link.classList.remove('active');
+
+      //shows the submenu bar, and that clicking them again hides it
+      subMenuEl.style.top = '0';
     }
   });
+
 
   //Part 5: Adding Submenu Interaction 
   //check if clicked link is active
@@ -175,13 +179,16 @@ topMenuEl.addEventListener('click', (event) => {
 
         //Setting the text on the submenuElement to the value in menulink.sublink.text.
         submenuElement.textContent = subLink.text;
-        
+
         //inserting the created submenuElement into the submenu nav bar
         subMenuEl.appendChild(submenuElement);
       });
     }
     //if not sublinks were found on the array remove everthing from the submenu
-    else  subMenuEl.innerHTML = '';
+    else {
+      subMenuEl.innerHTML = ''
+      subMenuEl.style.top = '0';  
+    };
   }
 });
 
